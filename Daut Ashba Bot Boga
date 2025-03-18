@@ -1,8 +1,11 @@
-setInterval(() => { 
- _WND_proc('gifts', 'buy', { id: 1074, uid: 1382452, txt: 'Даут Бог', cr: 1, hd: 0 }, event); 
+var szd =['FSB45','Not Hot','Мегер','Кексик Мур','Fеliсe_e_Bella'];
+setInterval(function() {
+var create = $('#gml_list').find('span');
+for (var i = 0; i < create.length; i++) {
+if (szd.indexOf($($(create)[i]).text()) != -1) {
+_GM_action('gml', 'join', parseInt($($(create)[i]).parent('div').parent('li').attr('id').replace(/\D+/g, "")), event);
+break;
+}
+}
+if ($('#pp_fin').length || pla_data['dead']) { _DLG('exit', 2); }
 }, 1000);
-
-        default:
-            break;
-    }
-}, 500);
