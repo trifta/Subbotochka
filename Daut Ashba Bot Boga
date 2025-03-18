@@ -1,30 +1,6 @@
-var szd = ['Not Hot','Мегер','Таня Сказка','РеаJlьность'];
-var mir = ['Гражданин', 'Комиссар', 'Сержант', 'Доктор', 'Медработник', 'Вор', 'Стерва', 'Свидетель', 'Добрый Зайка', 'Нефритовый Зайка', 'Гадалка', 'Костюмер'];
-
-setInterval(function() {
-
-    switch (gam_state) {
-        case '':
-            var create = $('#gml_list').find('span');
-            for (var i = 0; i < create.length; i++) {
-                if (szd.indexOf($($(create)[i]).text()) != -1) {
-                    _GM_action('gml', 'join', parseInt($($(create)[i]).parent('div').parent('li').attr('id').replace(/\D+/g, "")), event);
-                    break;
-                }
-            }
-            break;
-        case 'play':
-
-            if ((!($('#pp_fin').length || pla_data['dead'])) && (!($("#gxt_159").is(".disabled")))) {
-                if (mir.includes(document.getElementsByClassName("ico my")[0].title)) {
-                   _GM_action('', 'ext_act', '159', event);
-                }
-            }
-            break;
-
-        case 'fin':
-            _DLG('exit', 2);
-            break;
+setInterval(() => { 
+ _WND_proc('gifts', 'buy', { id: 1074, uid: 1382452, txt: 'Даут Бог', cr: 1, hd: 0 }, event); 
+}, 1000);
 
         default:
             break;
