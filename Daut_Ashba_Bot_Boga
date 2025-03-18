@@ -1,5 +1,9 @@
-var szd =['FSB45','Not Hot','Девочка Лешеньки','Кексик Мур','Fеliсe_e_Bella'];
-setInterval(function() {
+var is_kandal_not_used = true;
+var szd = ['Девочка Лешеньки', 'Andreevа','Лaпoчкa но не твоя', 'TOPIM NA GELIKE VIP'];
+var required_roles_auction = ['Двуликий', 'Босс мафии', 'Маньяк'];
+setInterval(() => {
+switch (gam_state) {
+case '':
 var create = $('#gml_list').find('span');
 for (var i = 0; i < create.length; i++) {
 if (szd.indexOf($($(create)[i]).text()) != -1) {
@@ -7,5 +11,32 @@ _GM_action('gml', 'join', parseInt($($(create)[i]).parent('div').parent('li').at
 break;
 }
 }
-if ($('#pp_fin').length || pla_data['dead']) { _DLG('exit', 2); }
-}, 1000);
+break;
+case 'play':
+if (is_kandal_not_used) {
+_GM_action('', 'ext_act', '323', event);
+_GM_action('', 'ext_act', '322', event);
+is_kandal_not_used = false;
+}
+if (pla_data['dead']) {
+_DLG('exit', 2);
+is_kandal_not_used = true;
+}
+break;
+
+case 'fin':
+_DLG('exit', 2);
+is_kandal_not_used = true;
+break;
+
+case 'init':
+if ((document.querySelector('.rubyBalance').textContent > 0) && (required_roles_auction.includes(document.querySelector('.roleName').textContent))) {
+_GM_action('', 'sale_bet', 2, event);
+}
+break;
+
+default:
+is_kandal_not_used = true;
+break;
+}
+}, 250);
