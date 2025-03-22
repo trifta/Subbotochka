@@ -1,4 +1,4 @@
-var players = 12; 
+var players = 8; 
 var liga =2; //лига по порядку от 1 бронза
 var money =300;
 setInterval(function(){
