@@ -1,6 +1,6 @@
-var players = 12;
+var players = 8;
 var liga =2;//лига от 1 бронза и далее по порядку
-var money =100;
+var money =300;
 setInterval(function(){
 if(gam_state==""){
 $("#buttonCreateGame").click();
