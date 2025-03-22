@@ -1,5 +1,5 @@
-var players = 12;
-var liga =2;//лига от 1 бронза и далее по порядку
+var players = 12; //лига от 1 бронза и далее по порядку
+var liga =2;
 var money =300;
 setInterval(function(){
 if(gam_state==""){
