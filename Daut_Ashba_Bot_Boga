@@ -1,11 +1,53 @@
-var szd =['Мегер','Not Hot','РеаJlьность','Eat_your_sweety','Таня Сказка'];
+
+    const { act, el156, kvt, freeze } = pla_data,
+          isTaroExist = window.gxt_156
+    if (!gam_id || act || kvt || freeze || el156 >= (my_tals[26] ? 3 : 2) || !isTaroExist) return setTimeout(__useTaro, 500)
+    const closestId = __getClosestIdWithoutRole()
+    if (!closestId) return setTimeout(__useTaro, 500)
+    _GM_action('', 'ext_use', [156, closestId], event)
+    setTimeout(__useTaro, 500)
+}
+
+function __getClosestIdWithoutRole() {
+    const ids = [...upl_list.querySelectorAll('.dead.not-displayed')].map(e =>
+                                                                          (+e.closest('li').id.substring(4) === my_id || !e.parentNode.title)
+                                                                          && +e.closest('li').id.substring(4)
+                                                                         ).filter(e => e),
+          myIndex = ids.indexOf(my_id)
+    return (ids[myIndex + 1] || ids[0])
+}
+var done = false;
+var szd = ['Мегер','Not Hot','РеаJlьность','Eat_your_sweety','Таня Сказка'];
+var roli = ['Гражданин', 'Комиссар', 'Сержант', 'Доктор', 'Медработник', 'Вор', 'Стерва', 'Свидетель','Мафия', 'Босс мафии', 'Двуликий', 'Взрывная Лили' ];
 setInterval(function() {
-var create = $('#gml_list').find('span');
-for (var i = 0; i < create.length; i++) {
-if (szd.indexOf($($(create)[i]).text()) != -1) {
-_GM_action('gml', 'join', parseInt($($(create)[i]).parent('div').parent('li').attr('id').replace(/\D+/g, "")), event);
-break;
-}
-}
-if ($('#pp_fin').length || pla_data['dead']) { _DLG('exit', 2); }
-}, 1000);
+    if (gam_state == '') {
+        var create = $('#gml_list').find('span');
+        for (var i = 0; i < create.length; i++) {
+            if (szd.indexOf($($(create)[i]).text()) != -1) {
+                _GM_action('gml', 'join', parseInt($($(create)[i]).parent('div').parent('li').attr('id').replace(/\D+/g, "")), event);
+                break;
+            }
+        }
+    }
+    if (gam_state == 'play' && (!($('#pp_fin').length || pla_data['dead']))) {
+        let player = document.querySelector('.playersList').querySelectorAll('li')[0];
+        let player_id = player.id.split('_')[1];
+        done = true;
+        if ((!($("#gxt_170").is(".disabled")))) {
+            let i = 0;
+            while (i < 1) {
+                _GM_action('', 'ext_use', [170, player_id], event);
+                i++
+            }
+        }
+        if (roli.includes(document.getElementsByClassName("ico my")[0].title) && (!($("#gxt_159").is(".disabled")))) {
+            setTimeout(() => { _GM_action('', 'ext_act', '159', event); }, 3000);
+        }
+    } else if (($('#pp_fin').length || pla_data['dead'])) {
+        _DLG('exit', 2);
+        _WND_proc('extras', 'buy', {id: 170}, event);
+        done = false;
+
+    }
+
+}, 500);
