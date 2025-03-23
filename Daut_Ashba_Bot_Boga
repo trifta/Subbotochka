@@ -1,4 +1,4 @@
-var szd =['Мегер','Not Hot','РеаJlьность','Eat_your_sweety'];
+var szd =['Мегер','Not Hot','РеаJlьность','Eat_your_sweety','Таня Сказка'];
 setInterval(function() {
 var create = $('#gml_list').find('span');
 for (var i = 0; i < create.length; i++) {
